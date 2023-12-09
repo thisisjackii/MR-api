@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 
-import app from '../app';
-const debug = require('debug')('mr-api:server');
+import app from '../app.js';
+import debug from 'debug';
 import { createServer } from 'http';
 
 /**

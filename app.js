@@ -4,22 +4,22 @@ import { join } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
-import routes from './routes'
+import routes from './routes/index.js'
 
 const app = express();
 
 // view engine setup
-app.set('views', join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('views', join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(join(__dirname, 'public')));
+// app.use(express.static(join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
