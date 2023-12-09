@@ -8,25 +8,19 @@ const dbConfig = {
     connectString: 'localhost:1521/xepdb1',
 };
 
-router.get('/query1', async (req, res) => {
+// Execute addRekapBulananForAllUsers procedure
+router.post('/execute-rekap-bulanan', async (req, res) => {
     let connection;
 
     try {
         connection = await oracledb.getConnection(dbConfig);
 
-        const plsqlQuery = `
-        DECLARE
-          -- Your PL/SQL declarations go here for query 1
-        BEGIN
-          -- Your PL/SQL logic goes here for query 1
-        END;
-      `;
+        // Call the controller procedure to execute addRekapBulananForAllUsers
+        await connection.execute(`BEGIN addRekapBulananForAllUsers; END;`);
 
-        const result = await connection.execute(plsqlQuery);
-
-        res.json(result.rows);
+        res.json({ message: 'addRekapBulananForAllUsers executed successfully' });
     } catch (error) {
-        console.error('Error executing query 1:', error);
+        console.error('Error executing addRekapBulananForAllUsers:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     } finally {
         if (connection) {

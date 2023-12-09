@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import welcomePageRoutes from './welcomePageRoutes'
+import welcomePageRoutes from './welcomePageRoutes.js'
 import akunRoutes from './akunRoutes.js';
 import hutangRoutes from './hutangRoutes.js';
 import kategoriPemasukanRoutes from './kategoriPemasukanRoutes.js';
